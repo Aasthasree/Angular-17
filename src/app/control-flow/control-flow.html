@@ -1,0 +1,56 @@
+<h2>Angular 17 Control Flow Practice</h2>
+
+<!-- 🔹 @if Example -->
+<section>
+  <h3>if Example</h3>
+  <button (click)="toggleLogin()">
+    Toggle Login (Currently: {{ isLoggedIn ? 'Logged In' : 'Logged Out' }})
+  </button>
+
+  @if (isLoggedIn) {
+    <p>✅ Welcome back, user!</p>
+  } @else {
+    <p>❌ Please log in to continue.</p>
+  }
+</section>
+
+<hr />
+
+<!-- 🔹 @for Example -->
+<section>
+  <h3>for Example</h3>
+  <ul>
+    @for (user of users; track user.id) {
+      <li>
+        <strong>{{ user.name }}</strong> ({{ user.role }})
+      </li>
+    }
+  </ul>
+</section>
+
+<hr />
+
+<!-- 🔹 @switch Example -->
+<section>
+  <h3>switch Example</h3>
+  <p>Selected role: {{ selectedRole }}</p>
+
+  <button (click)="changeRole('admin')">Set Admin</button>
+  <button (click)="changeRole('editor')">Set Editor</button>
+  <button (click)="changeRole('viewer')">Set Viewer</button>
+
+  @switch (selectedRole) {
+    @case ('admin') {
+      <p>👑 You have full access.</p>
+    }
+    @case ('editor') {
+      <p>✍️ You can edit content.</p>
+    }
+    @case ('viewer') {
+      <p>👀 You can only view content.</p>
+    }
+    @default {
+      <p>🤔 Unknown role.</p>
+    }
+  }
+</section>
